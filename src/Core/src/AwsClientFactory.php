@@ -64,6 +64,7 @@ class AwsClientFactory
 {
     /**
      * @var array<string, mixed>
+     * @psalm-var class-string-map<T as AbstractApi, T>
      */
     private $serviceCache;
 
@@ -110,11 +111,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/app-sync', 'AppSync');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new AppSyncClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[AppSyncClient::class])) {
+            $this->serviceCache[AppSyncClient::class] = new AppSyncClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[AppSyncClient::class];
     }
 
     public function cloudFormation(): CloudFormationClient
@@ -123,11 +124,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/cloud-formation', 'CloudFormation');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new CloudFormationClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[CloudFormationClient::class])) {
+            $this->serviceCache[CloudFormationClient::class] = new CloudFormationClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[CloudFormationClient::class];
     }
 
     public function cloudFront(): CloudFrontClient
@@ -136,11 +137,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/cloud-front', 'CloudFront');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new CloudFrontClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[CloudFrontClient::class])) {
+            $this->serviceCache[CloudFrontClient::class] = new CloudFrontClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[CloudFrontClient::class];
     }
 
     public function cloudWatch(): CloudWatchClient
@@ -149,11 +150,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/cloud-watch', 'CloudWatch');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new CloudWatchClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[CloudWatchClient::class])) {
+            $this->serviceCache[CloudWatchClient::class] = new CloudWatchClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[CloudWatchClient::class];
     }
 
     public function cloudWatchLogs(): CloudWatchLogsClient
@@ -162,11 +163,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/cloud-watch-logs', 'CloudWatchLogs');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new CloudWatchLogsClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[CloudWatchLogsClient::class])) {
+            $this->serviceCache[CloudWatchLogsClient::class] = new CloudWatchLogsClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[CloudWatchLogsClient::class];
     }
 
     public function codeBuild(): CodeBuildClient
@@ -175,11 +176,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/code-build', 'CodeBuild');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new CodeBuildClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[CodeBuildClient::class])) {
+            $this->serviceCache[CodeBuildClient::class] = new CodeBuildClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[CodeBuildClient::class];
     }
 
     public function codeCommit(): CodeCommitClient
@@ -188,11 +189,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/code-commit', 'CodeCommit');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new CodeCommitClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[CodeCommitClient::class])) {
+            $this->serviceCache[CodeCommitClient::class] = new CodeCommitClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[CodeCommitClient::class];
     }
 
     public function codeDeploy(): CodeDeployClient
@@ -201,11 +202,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/code-deploy', 'CodeDeploy');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new CodeDeployClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[CodeDeployClient::class])) {
+            $this->serviceCache[CodeDeployClient::class] = new CodeDeployClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[CodeDeployClient::class];
     }
 
     public function comprehend(): ComprehendClient
@@ -214,11 +215,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/comprehend', 'ComprehendClient');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new ComprehendClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[ComprehendClient::class])) {
+            $this->serviceCache[ComprehendClient::class] = new ComprehendClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[ComprehendClient::class];
     }
 
     public function dynamoDb(): DynamoDbClient
@@ -227,11 +228,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/dynamo-db', 'DynamoDb');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new DynamoDbClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[DynamoDbClient::class])) {
+            $this->serviceCache[DynamoDbClient::class] = new DynamoDbClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[DynamoDbClient::class];
     }
 
     public function ecr(): EcrClient
@@ -240,11 +241,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/ecr', 'ECR');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new EcrClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[EcrClient::class])) {
+            $this->serviceCache[EcrClient::class] = new EcrClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[EcrClient::class];
     }
 
     public function elastiCache(): ElastiCacheClient
@@ -253,11 +254,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/elasti-cache', 'ElastiCache');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new ElastiCacheClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[ElastiCacheClient::class])) {
+            $this->serviceCache[ElastiCacheClient::class] = new ElastiCacheClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[ElastiCacheClient::class];
     }
 
     public function eventBridge(): EventBridgeClient
@@ -266,11 +267,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/event-bridge', 'EventBridge');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new EventBridgeClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[EventBridgeClient::class])) {
+            $this->serviceCache[EventBridgeClient::class] = new EventBridgeClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[EventBridgeClient::class];
     }
 
     public function firehose(): FirehoseClient
@@ -279,11 +280,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/firehose', 'Firehose');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new FirehoseClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[FirehoseClient::class])) {
+            $this->serviceCache[FirehoseClient::class] = new FirehoseClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[FirehoseClient::class];
     }
 
     public function iam(): IamClient
@@ -292,11 +293,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/iam', 'IAM');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new IamClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[IamClient::class])) {
+            $this->serviceCache[IamClient::class] = new IamClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[IamClient::class];
     }
 
     public function iot(): IotClient
@@ -305,11 +306,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/iot', 'Iot');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new IotClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[IotClient::class])) {
+            $this->serviceCache[IotClient::class] = new IotClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[IotClient::class];
     }
 
     public function iotData(): IotDataClient
@@ -318,11 +319,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/iot-data', 'IotData');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new IotDataClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[IotDataClient::class])) {
+            $this->serviceCache[IotDataClient::class] = new IotDataClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[IotDataClient::class];
     }
 
     public function kinesis(): KinesisClient
@@ -331,11 +332,11 @@ class AwsClientFactory
             throw MissingDependency::create('aws/kinesis', 'Kinesis');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new KinesisClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[KinesisClient::class])) {
+            $this->serviceCache[KinesisClient::class] = new KinesisClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[KinesisClient::class];
     }
 
     public function kms(): KmsClient
@@ -344,11 +345,11 @@ class AwsClientFactory
             throw MissingDependency::create('aws/kms', 'Kms');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new KmsClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[KmsClient::class])) {
+            $this->serviceCache[KmsClient::class] = new KmsClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[KmsClient::class];
     }
 
     public function lambda(): LambdaClient
@@ -357,11 +358,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/lambda', 'Lambda');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new LambdaClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[LambdaClient::class])) {
+            $this->serviceCache[LambdaClient::class] = new LambdaClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[LambdaClient::class];
     }
 
     public function locationService(): LocationServiceClient
@@ -370,11 +371,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/location-service', 'LocationService');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new LocationServiceClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[LocationServiceClient::class])) {
+            $this->serviceCache[LocationServiceClient::class] = new LocationServiceClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[LocationServiceClient::class];
     }
 
     public function mediaConvert(): MediaConvertClient
@@ -383,11 +384,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/media-convert', 'MediaConvert');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new MediaConvertClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[MediaConvertClient::class])) {
+            $this->serviceCache[MediaConvertClient::class] = new MediaConvertClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[MediaConvertClient::class];
     }
 
     public function rdsDataService(): RdsDataServiceClient
@@ -396,11 +397,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/rds-data-service', 'RdsDataService');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new RdsDataServiceClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[RdsDataServiceClient::class])) {
+            $this->serviceCache[RdsDataServiceClient::class] = new RdsDataServiceClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[RdsDataServiceClient::class];
     }
 
     public function rekognition(): RekognitionClient
@@ -409,11 +410,11 @@ class AwsClientFactory
             throw MissingDependency::create('aws/rekognition', 'Rekognition');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new RekognitionClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[RekognitionClient::class])) {
+            $this->serviceCache[RekognitionClient::class] = new RekognitionClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[RekognitionClient::class];
     }
 
     public function route53(): Route53Client
@@ -422,11 +423,11 @@ class AwsClientFactory
             throw MissingDependency::create('aws/route53', 'Route53');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new Route53Client($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[Route53Client::class])) {
+            $this->serviceCache[Route53Client::class] = new Route53Client($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[Route53Client::class];
     }
 
     public function s3(): S3Client
@@ -435,11 +436,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/s3', 'S3');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new S3Client($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[S3Client::class])) {
+            $this->serviceCache[S3Client::class] = new S3Client($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[S3Client::class];
     }
 
     public function scheduler(): SchedulerClient
@@ -448,11 +449,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/scheduler', 'Scheduler');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new SchedulerClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[SchedulerClient::class])) {
+            $this->serviceCache[SchedulerClient::class] = new SchedulerClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[SchedulerClient::class];
     }
 
     public function secretsManager(): SecretsManagerClient
@@ -461,11 +462,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/secret-manager', 'SecretsManager');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new SecretsManagerClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[SecretsManagerClient::class])) {
+            $this->serviceCache[SecretsManagerClient::class] = new SecretsManagerClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[SecretsManagerClient::class];
     }
 
     public function ses(): SesClient
@@ -474,11 +475,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/ses', 'SES');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new SesClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[SesClient::class])) {
+            $this->serviceCache[SesClient::class] = new SesClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[SesClient::class];
     }
 
     public function sns(): SnsClient
@@ -487,11 +488,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/sns', 'SNS');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new SnsClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[SnsClient::class])) {
+            $this->serviceCache[SnsClient::class] = new SnsClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[SnsClient::class];
     }
 
     public function sqs(): SqsClient
@@ -500,11 +501,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/sqs', 'SQS');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new SqsClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[SqsClient::class])) {
+            $this->serviceCache[SqsClient::class] = new SqsClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[SqsClient::class];
     }
 
     public function ssm(): SsmClient
@@ -513,29 +514,29 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/ssm', 'SSM');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new SsmClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[SsmClient::class])) {
+            $this->serviceCache[SsmClient::class] = new SsmClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[SsmClient::class];
     }
 
     public function sso(): SsoClient
     {
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new SsoClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[SsoClient::class])) {
+            $this->serviceCache[SsoClient::class] = new SsoClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[SsoClient::class];
     }
 
     public function sts(): StsClient
     {
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new StsClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[StsClient::class])) {
+            $this->serviceCache[StsClient::class] = new StsClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[StsClient::class];
     }
 
     public function stepFunctions(): StepFunctionsClient
@@ -544,11 +545,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/step-functions', 'StepFunctions');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new StepFunctionsClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[StepFunctionsClient::class])) {
+            $this->serviceCache[StepFunctionsClient::class] = new StepFunctionsClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[StepFunctionsClient::class];
     }
 
     public function timestreamQuery(): TimestreamQueryClient
@@ -557,11 +558,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/timestream-query', 'TimestreamQuery');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new TimestreamQueryClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[TimestreamQueryClient::class])) {
+            $this->serviceCache[TimestreamQueryClient::class] = new TimestreamQueryClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[TimestreamQueryClient::class];
     }
 
     public function timestreamWrite(): TimestreamWriteClient
@@ -570,11 +571,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/timestream-write', 'TimestreamWrite');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new TimestreamWriteClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[TimestreamWriteClient::class])) {
+            $this->serviceCache[TimestreamWriteClient::class] = new TimestreamWriteClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[TimestreamWriteClient::class];
     }
 
     public function translate(): TranslateClient
@@ -583,11 +584,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/translate', 'Translate');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new TranslateClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[TranslateClient::class])) {
+            $this->serviceCache[TranslateClient::class] = new TranslateClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[TranslateClient::class];
     }
 
     public function xRay(): XRayClient
@@ -596,11 +597,11 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/x-ray', 'XRay');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new XRayClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[XRayClient::class])) {
+            $this->serviceCache[XRayClient::class] = new XRayClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[XRayClient::class];
     }
 
     public function cognitoIdentityProvider(): CognitoIdentityProviderClient
@@ -609,11 +610,11 @@ class AwsClientFactory
             throw MissingDependency::create('aws/cognito-identity-provider', 'CognitoIdentityProvider');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new CognitoIdentityProviderClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[CognitoIdentityProviderClient::class])) {
+            $this->serviceCache[CognitoIdentityProviderClient::class] = new CognitoIdentityProviderClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[CognitoIdentityProviderClient::class];
     }
 
     public function athena(): AthenaClient
@@ -622,10 +623,10 @@ class AwsClientFactory
             throw MissingDependency::create('async-aws/athena', 'Athena');
         }
 
-        if (!isset($this->serviceCache[__METHOD__])) {
-            $this->serviceCache[__METHOD__] = new AthenaClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
+        if (!isset($this->serviceCache[AthenaClient::class])) {
+            $this->serviceCache[AthenaClient::class] = new AthenaClient($this->configuration, $this->credentialProvider, $this->httpClient, $this->logger);
         }
 
-        return $this->serviceCache[__METHOD__];
+        return $this->serviceCache[AthenaClient::class];
     }
 }
