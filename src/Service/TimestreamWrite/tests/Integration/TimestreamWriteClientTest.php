@@ -4,6 +4,8 @@ namespace AsyncAws\TimestreamWrite\Tests\Integration;
 
 use AsyncAws\Core\Credentials\NullProvider;
 use AsyncAws\Core\Test\TestCase;
+use AsyncAws\TimestreamWrite\Enum\DimensionValueType;
+use AsyncAws\TimestreamWrite\Enum\MeasureValueType;
 use AsyncAws\TimestreamWrite\Input\WriteRecordsRequest;
 use AsyncAws\TimestreamWrite\TimestreamWriteClient;
 use AsyncAws\TimestreamWrite\ValueObject\Dimension;
@@ -14,8 +16,6 @@ class TimestreamWriteClientTest extends TestCase
 {
     public function testWriteRecords(): void
     {
-        self::markTestIncomplete('Cannot test without support for timestream.');
-
         $client = $this->getClient();
 
         $input = new WriteRecordsRequest([
@@ -25,25 +25,25 @@ class TimestreamWriteClientTest extends TestCase
                 'Dimensions' => [new Dimension([
                     'Name' => 'change me',
                     'Value' => 'change me',
-                    'DimensionValueType' => 'change me',
+                    'DimensionValueType' => DimensionValueType::VARCHAR,
                 ])],
                 'MeasureName' => 'change me',
                 'MeasureValue' => 'change me',
-                'MeasureValueType' => 'change me',
+                'MeasureValueType' => MeasureValueType::VARCHAR,
                 'Time' => 'change me',
                 'TimeUnit' => 'change me',
                 'Version' => 1337,
                 'MeasureValues' => [new MeasureValue([
                     'Name' => 'change me',
                     'Value' => 'change me',
-                    'Type' => 'change me',
+                    'Type' => MeasureValueType::VARCHAR,
                 ])],
             ]),
             'Records' => [new Record([
                 'Dimensions' => [new Dimension([
                     'Name' => 'change me',
                     'Value' => 'change me',
-                    'DimensionValueType' => 'change me',
+                    'DimensionValueType' => DimensionValueType::VARCHAR,
                 ])],
                 'MeasureName' => 'change me',
                 'MeasureValue' => 'change me',
@@ -54,7 +54,7 @@ class TimestreamWriteClientTest extends TestCase
                 'MeasureValues' => [new MeasureValue([
                     'Name' => 'change me',
                     'Value' => 'change me',
-                    'Type' => 'change me',
+                    'Type' => MeasureValueType::VARCHAR,
                 ])],
             ])],
         ]);
@@ -67,7 +67,7 @@ class TimestreamWriteClientTest extends TestCase
 
     private function getClient(): TimestreamWriteClient
     {
-        self::fail('Not implemented');
+        self::markTestSkipped('There is no Docker image for Timestream Write');
 
         return new TimestreamWriteClient([
             'endpoint' => 'http://localhost',

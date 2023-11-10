@@ -13,8 +13,6 @@ class TimestreamQueryClientTest extends TestCase
 {
     public function testCancelQuery(): void
     {
-        self::markTestIncomplete('Cannot test without support for timestream.');
-
         $client = $this->getClient();
 
         $input = new CancelQueryRequest([
@@ -29,8 +27,6 @@ class TimestreamQueryClientTest extends TestCase
 
     public function testPrepareQuery(): void
     {
-        self::markTestIncomplete('Cannot test without support for timestream.');
-
         $client = $this->getClient();
 
         $input = new PrepareQueryRequest([
@@ -48,8 +44,6 @@ class TimestreamQueryClientTest extends TestCase
 
     public function testQuery(): void
     {
-        self::markTestIncomplete('Cannot test without support for timestream.');
-
         $client = $this->getClient();
 
         $input = new QueryRequest([
@@ -71,7 +65,7 @@ class TimestreamQueryClientTest extends TestCase
 
     private function getClient(): TimestreamQueryClient
     {
-        self::fail('Not implemented');
+        self::markTestSkipped('There is no Docker image for Timestream Query');
 
         return new TimestreamQueryClient([
             'endpoint' => 'http://localhost',

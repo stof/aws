@@ -2,7 +2,7 @@
 
 namespace AsyncAws\StepFunctions\Tests\Integration;
 
-use AsyncAws\Core\Credentials\NullProvider;
+use AsyncAws\Core\Credentials\Credentials;
 use AsyncAws\Core\Test\TestCase;
 use AsyncAws\StepFunctions\Input\SendTaskFailureInput;
 use AsyncAws\StepFunctions\Input\SendTaskHeartbeatInput;
@@ -15,8 +15,6 @@ class StepFunctionsClientTest extends TestCase
 {
     public function testSendTaskFailure(): void
     {
-        self::markTestIncomplete('Cannot test SendTaskFailure without the ability to create machines available.');
-
         $client = $this->getClient();
 
         $input = new SendTaskFailureInput([
@@ -31,8 +29,6 @@ class StepFunctionsClientTest extends TestCase
 
     public function testSendTaskHeartbeat(): void
     {
-        self::markTestIncomplete('Cannot test SendTaskHeartbeat without the ability to create machines available.');
-
         $client = $this->getClient();
 
         $input = new SendTaskHeartbeatInput([
@@ -45,8 +41,6 @@ class StepFunctionsClientTest extends TestCase
 
     public function testSendTaskSuccess(): void
     {
-        self::markTestIncomplete('Cannot test SendTaskSuccess without the ability to create machines available.');
-
         $client = $this->getClient();
 
         $input = new SendTaskSuccessInput([
@@ -60,8 +54,6 @@ class StepFunctionsClientTest extends TestCase
 
     public function testStartExecution(): void
     {
-        self::markTestIncomplete('Cannot test StartExecution without the ability to create machines available.');
-
         $client = $this->getClient();
 
         $input = new StartExecutionInput([
@@ -77,8 +69,6 @@ class StepFunctionsClientTest extends TestCase
 
     public function testStopExecution(): void
     {
-        self::markTestIncomplete('Cannot test StartExecution without the ability to create machines available.');
-
         $client = $this->getClient();
 
         $input = new StopExecutionInput([
@@ -93,10 +83,8 @@ class StepFunctionsClientTest extends TestCase
 
     private function getClient(): StepFunctionsClient
     {
-        self::fail('Not implemented');
-
         return new StepFunctionsClient([
-            'endpoint' => 'http://localhost',
-        ], new NullProvider());
+            'endpoint' => 'http://localhost:4580',
+        ], new Credentials('aws_id', 'aws_secret'));
     }
 }
